@@ -1,0 +1,23 @@
+[package]
+name = "daemon"
+version = "1.1.0"
+authors = ["Amazon Firecracker team <firecracker-devel@amazon.com>"]
+edition = "2021"
+
+[dependencies]
+libc = "0.2.117"
+serde = { version = "1.0.136", features = ["derive"] }
+serde_json = "1.0.78"
+userfaultfd = "0.5.1"
+pmem = "0.1.0"
+lazy_static="1.4.0"
+
+utils = { path = "./utils" }
+
+[workspace]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"

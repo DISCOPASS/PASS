@@ -1,0 +1,16 @@
+[workspace]
+members = ["src/firecracker", "src/jailer", "src/seccompiler", "src/rebase-snap", "src/cpu-template-helper"]
+default-members = ["src/firecracker"]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+lto = true
+
+[patch.crates-io]
+kvm-bindings = { git = "https://github.com/firecracker-microvm/kvm-bindings", tag = "v0.6.0-1", features = ["fam-wrappers"] }
+
+[build]
+rustflags = ["-C", "opt-level=3"]
